@@ -42,7 +42,7 @@ export default class App extends React.Component {
                             {this.state.books.map((book, i) => (
                                 <tr key={i}>
                                     <td>{book.title}</td>
-                                    <td>{book.author}</td>
+                                    <td>{book.author.name}</td>
                                     <td>{moment(book.date_published).format('MMMM Do, YYYY')}</td>
                                 </tr>
                             ))}
