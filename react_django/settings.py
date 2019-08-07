@@ -79,19 +79,19 @@ WSGI_APPLICATION = 'react_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'books',
+        'HOST': '',
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
@@ -121,8 +121,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = '/'
 STATIC_URL = '/static/'
+
+CLIENT_DIR = os.path.join(BASE_DIR, 'client')
+
+STATICFILES_DIRS = [
+    os.path.join(CLIENT_DIR, 'build'),
+    os.path.join(CLIENT_DIR, 'build', 'static'),
+]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]
+
+import dj_database_url
+if(os.environ.get('DATABASE_URL')):
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)

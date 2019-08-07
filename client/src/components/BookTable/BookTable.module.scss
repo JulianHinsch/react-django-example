@@ -1,0 +1,10 @@
+.book_table {
+    border: 1px solid #bbb;
+    border-collapse: collapse;
+    margin: 40px;
+    & td, th {
+        border: 1px solid #bbb;
+        text-align: left;
+        padding: 10px;
+    }
+}

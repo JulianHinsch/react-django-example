@@ -1,0 +1,29 @@
+.book_form {
+    margin: 40px;
+    display: flex;
+    width: 400px;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid #bbb;
+    padding: 10px 40px 30px 40px;
+    & label {
+        font-size: 12px;
+        padding: 5px 0;
+    }
+    & select, input, button {
+        max-width: 300px;
+        line-height: 30px;
+        height: 30px;
+    }
+    & button {
+        margin: 10px 0 0 0;
+        border-radius: 5px;
+        border: 1px solid #999;
+        font-size: 14px;
+        background-color: #efefef;
+        cursor: pointer;
+    }
+    & input {
+        padding-left: 5px;
+    }
+}
